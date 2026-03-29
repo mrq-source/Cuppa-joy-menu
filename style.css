@@ -1,0 +1,132 @@
+  :root {
+    --cream: #FAF3E8;
+    --espresso: #2C1A0E;
+    --caramel: #C07D3A;
+    --latte: #D4A96A;
+    --foam: #F0E6D3;
+    --bark: #5C3317;
+    --muted: #9A7B5C;
+  }
+  * { 
+    margin: 0; 
+    padding: 0;
+    box-sizing: border-box;
+}
+  body {
+    background-color: var(--cream);
+    color: var(--espresso); 
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh; 
+    overflow-x: hidden;
+}
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E"); 
+    pointer-events: none; 
+    z-index: 0; 
+    opacity: 0.5;
+}
+
+  header { 
+    position: relative; 
+    text-align: center; 
+    padding: 56px 24px 48px; 
+    background: var(--espresso); 
+    overflow: hidden; 
+}
+  header::after { 
+    content: ''; 
+    position: absolute; 
+    bottom: -1px; 
+    left: 0; 
+    right: 0; 
+    height: 40px; 
+    background: var(--cream); 
+    clip-path: ellipse(55% 100% at 50% 100%); 
+}
+  .logo-img { 
+    width: 170px; 
+    height: auto; 
+    border-radius: 12px; 
+    object-fit: contain; 
+    margin: 0 auto 12px; 
+    display: block; 
+}
+  header h1 { 
+    font-family: 'Playfair Display', serif; 
+    font-size: clamp(2.4rem, 6vw, 3.8rem); 
+    color: var(--cream); 
+    letter-spacing: 0.02em; 
+    line-height: 1; 
+}
+  header h1 em { 
+    color: var(--caramel); 
+    font-style: italic; 
+}
+  header p { 
+    margin-top: 10px; 
+    color: var(--muted); 
+    font-size: 0.85rem; 
+    letter-spacing: 0.18em; 
+    text-transform: uppercase; 
+}
+
+  nav { 
+    display: flex; 
+    overflow-x: auto; 
+    -webkit-overflow-scrolling: touch; 
+    padding: 24px 16px 0; 
+    gap: 0; 
+    scrollbar-width: none; 
+}
+  nav::-webkit-scrollbar { 
+    display: none; 
+}
+  nav button { background: none; border: none; font-family: 'DM Sans', sans-serif; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); cursor: pointer; padding: 10px 16px; border-bottom: 2px solid transparent; white-space: nowrap; transition: all 0.25s ease; flex-shrink: 0; }
+  nav button.active { color: var(--caramel); border-bottom-color: var(--caramel); }
+  nav button:hover:not(.active) { color: var(--espresso); }
+
+  main { max-width: 720px; margin: 0 auto; padding: 32px 20px 80px; position: relative; z-index: 1; }
+  .section { display: none; animation: fadeUp 0.35s ease; }
+  .section.active { display: block; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+
+  .section-title { font-family: 'Playfair Display', serif; font-size: 1.9rem; color: var(--bark); margin-bottom: 4px; }
+  .section-subtitle { font-size: 0.78rem; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 24px; }
+
+  .divider { display: flex; align-items: center; gap: 12px; margin: 26px 0 14px; }
+  .divider span { font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
+  .divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: var(--latte); opacity: 0.4; }
+
+  .item { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; padding: 14px 0; border-bottom: 1px solid rgba(192,125,58,0.12); }
+  .item:last-child { border-bottom: none; }
+  .item-info { flex: 1; }
+  .item-name { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--espresso); margin-bottom: 2px; }
+  .item-desc { font-size: 0.78rem; color: var(--muted); line-height: 1.5; font-weight: 300; }
+  .item-tags { margin-top: 5px; display: flex; gap: 5px; flex-wrap: wrap; }
+  .tag { font-size: 0.62rem; padding: 2px 7px; border-radius: 20px; letter-spacing: 0.07em; text-transform: uppercase; font-weight: 500; }
+  .tag-veg { background: #d2fdd9; color: #1a8b2a; }
+  .tag-spicy { background: #fde8d2; color: #b5541a; }
+  .tag-new { background: #fdd2f5; color: #8b1a7a; }
+  .tag-pop { background: #d2e8fd; color: #1a5ab5; }
+  .item-price { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--caramel); white-space: nowrap; font-weight: 700; min-width: 64px; text-align: right; }
+  .item-price .addon { display: block; font-size: 0.65rem; color: var(--muted); font-family: 'DM Sans', sans-serif; font-weight: 400; margin-top: 2px; }
+
+  .note-box { background: rgba(192,125,58,0.08); border-left: 3px solid var(--caramel); border-radius: 0 8px 8px 0; padding: 10px 14px; margin: 0 0 16px; font-size: 0.78rem; color: var(--bark); }
+
+  .combo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 14px; margin-top: 10px; }
+  .combo-card { background: var(--foam); border-radius: 12px; padding: 18px; border: 1px solid rgba(192,125,58,0.2); display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+  .combo-name { font-family: 'Playfair Display', serif; font-size: 0.95rem; color: var(--bark); margin-bottom: 4px; }
+  .combo-desc { font-size: 0.75rem; color: var(--muted); }
+  .combo-price { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--caramel); font-weight: 700; white-space: nowrap; }
+  .offer-box { background: var(--espresso); color: var(--cream); border-radius: 14px; padding: 20px 24px; margin-top: 16px; text-align: center; }
+  .offer-box h3 { font-family: 'Playfair Display', serif; font-size: 1.25rem; color: var(--latte); margin-bottom: 6px; }
+  .offer-box p { font-size: 0.82rem; color: var(--muted); line-height: 1.6; }
+  .offer-box .offer-price { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--caramel); font-weight: 700; margin-top: 8px; }
+
+  footer { text-align: center; padding: 24px; font-size: 0.72rem; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; }
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--foam); }
+  ::-webkit-scrollbar-thumb { background: var(--latte); border-radius: 3px; }
